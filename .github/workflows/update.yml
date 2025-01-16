@@ -1,0 +1,73 @@
+name: Sync Upstream to Self
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # UTC 时间凌晨 2 点自动运行
+  workflow_dispatch:  # 允许手动触发工作流
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取仓库
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # 拉取完整的提交历史
+
+      # 配置 Git 用户信息
+      - name: Set up Git
+        run: |
+          git config user.name "ZT229"  # 替换为你的 GitHub 用户名
+          git config user.email "2432702069@qq.com"  # 替换为你的邮箱
+
+      # 添加上游仓库
+      - name: Add Upstream Remote
+        run: |
+          if ! git remote get-url upstream; then
+            git remote add upstream https://github.com/VIKINGYFY/immortalwrt.git  # 替换为上游仓库 URL
+          fi
+
+      # 拉取上游更改
+      - name: Fetch Upstream Changes
+        run: git fetch upstream
+
+      # 切换到 main 分支
+      - name: Checkout Main Branch
+        run: git checkout main
+
+      # 合并上游更改到 main，并过滤不需要的内容
+      - name: Apply Upstream Changes to Main (with .gitignore filters)
+        run: |
+          git merge upstream/main --allow-unrelated-histories || {
+            echo "合并上游更改到 main 分支时发生冲突，正在自动解决冲突..."
+            # 自动解决冲突文件
+            git checkout --ours .gitignore  # 保留本地 .gitignore 的内容
+            git add .gitignore
+            # 移除不需要的文件夹和文件
+            git rm -r --cached .vscode .devcontainer || true
+            git rm --cached .github/workflows/Update-Athena-LED.yml || true
+            git commit -m "Resolve merge conflicts and apply upstream changes"
+          }
+          echo "合并完成"
+
+      # 推送到 main 分支
+      - name: Push Changes to Main Branch
+        run: git push origin main
+
+      # 切换到 self 分支并合并 main 的更改
+      - name: Merge Main Changes into Self Branch
+        run: |
+          git checkout self
+          git merge -X ours main || {
+            echo "合并 main 到 self 时发生冲突，保留 self 的内容。"
+            exit 1
+          }
+
+      # 推送到 self 分支
+      - name: Push Changes to Self Branch
+        run: |
+          git push origin self
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行身份验证

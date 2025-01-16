@@ -36,7 +36,5 @@ git-src
 .ccache
 .vscode*
 .vscode/
-.github*
-.github/
 .devcontainer*
 .devcontainer/
