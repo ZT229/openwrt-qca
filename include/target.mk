@@ -105,6 +105,52 @@ DEFAULT_PACKAGES.router:=\
   kmod-crypto-xxhash \
   kmod-crypto-engine \
   kmod-crypto-fcrypt \
+  kmod-cryptodev \
+  kmod-crypto-qce \
+  kmod-crypto-md5 \
+  kmod-qca-mcs \
+  kmod-qrtr-tun \
+  kmod-usb-acm \
+  kmod-usb-net \
+  kmod-usb-net-asix \
+  kmod-usb-net-aqc111 \
+  kmod-usb-net-asix-ax88179 \
+  kmod-usb-net-dm9601-ether \
+  kmod-usb-net-mcs7830 \
+  kmod-usb-net-pegasus \
+  kmod-usb-net-pl \
+  mod-usb-net-smsc75xx \
+  kmod-usb-net-smsc95xx \
+  kmod-usb-net-sr9700 \
+  kmod-usb-net-cdc-eem \
+  kmod-usb-net-cdc-ether \
+  kmod-usb-net-cdc-mbim \
+  kmod-usb-net-cdc-ncm \
+  kmod-usb-net-cdc-subset \
+  kmod-usb-net-dm9601-ether \
+  kmod-usb-net-hso \
+  kmod-usb-net-huawei-cdc-ncm \
+  kmod-usb-net-ipheth \
+  kmod-usb-net-kalmia \
+  kmod-usb-net-kaweth \
+  kmod-usb-net-qmi-wwan \
+  kmod-usb-net-qmi-wwan-fibocom \
+  kmod-usb-net-qmi-wwan-quectel \
+  kmod-usb-net-rndis \
+  kmod-usb-net-rtl8150 \
+  kmod-usb-net-rtl8152 \
+  kmod-usb-net-sierrawireless \
+  kmod-usb-serial-qualcomm \
+  kmod-usb-serial-sierrawireless \
+  kmod-usb-ohci-pci \
+  kmod-usb-serial \
+  kmod-usb-storage-extras \
+  kmod-usb-storage-uas \
+  kmod-usb-uhci \
+  kmod-usb-wdm \
+  kmod-usb2-pci \
+  kmod-fs-ntfs3 \
+  kmod-fs-ksmbd \
 	odhcp6c \
 	odhcpd-ipv6only \
 	ppp \
@@ -112,18 +158,46 @@ DEFAULT_PACKAGES.router:=\
   coremark \
   cpusage \
   lscpu \
+  comgt-ncm \
+  comgt-directip \
+  sendat \
+  umbim \
+  uqmi \
+  modemmanager \
+  modemmanager-rpcd \
+  dbus-utils \
+  mbim-utils \
+  qmi-utils \
+  quectel-timesync \
+  usb-modeswitch \
+  usbutils \
+  cfdisk \
+  blkid \
+  e4crypt \
+  exfat-fsck \
+  exfat-mkfs \
+  f2fs-tools \
+  libusbmuxd-utils \
+  usbmuxd \
   UDPspeeder \
   ucode-mod-bpf \
   ucode-mod-uclient \
   libdcwproto \
   libdcwsocket \
   luci-proto-ipv6 \
+  luci-proto-mbim \
+  luci-proto-ncm \
+  luci-proto-qmi \
+  luci-proto-quectel \
   luci-app-wol \
   luci-app-passwall \
   luci-app-filetransfer \
   luci-app-cpu-status \
   luci-app-ramfree \
   luci-app-daed \
+  luci-app-cpufreq \
+  luci-app-diskman \
+  luci-app-ksmbd \
   default-settings-chn
 # For easy usage
 DEFAULT_PACKAGES.tweak:=\
