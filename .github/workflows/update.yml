@@ -35,7 +35,7 @@ jobs:
 
       - name: Apply Upstream Changes to Main (with .gitignore filters)
         run: |
-          git merge upstream/main --no-commit --no-ff || {
+          git merge upstream/main --no-commit --no-ff --allow-unrelated-histories || {
             echo "合并 upstream/main 到 main 时发生冲突，请手动解决。"
             exit 1
           }
