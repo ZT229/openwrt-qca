@@ -135,7 +135,6 @@ DEFAULT_PACKAGES.router:=\
   kmod-usb-net-kaweth \
   kmod-usb-net-qmi-wwan \
   kmod-usb-net-qmi-wwan-fibocom \
-  kmod-usb-net-qmi-wwan-quectel \
   kmod-usb-net-rndis \
   kmod-usb-net-rtl8150 \
   kmod-usb-net-rtl8152 \
@@ -149,6 +148,13 @@ DEFAULT_PACKAGES.router:=\
   kmod-usb-uhci \
   kmod-usb-wdm \
   kmod-usb2-pci \
+  kmod-mhi-net \
+  kmod-mhi-pci-generic \
+  kmod-mhi-wwan-ctrl \
+  kmod-mhi-wwan-mbim \
+  kmod-nss-ifb \
+  kmod-qca-nss-macsec \
+  kmod-wwan \
   kmod-fs-ntfs3 \
   kmod-fs-ksmbd \
 	odhcp6c \
@@ -184,6 +190,8 @@ DEFAULT_PACKAGES.router:=\
   ucode-mod-uclient \
   libdcwproto \
   libdcwsocket \
+  ksmbd-hotplug \
+  ksmbd-avahi-service \
   luci-proto-ipv6 \
   luci-proto-mbim \
   luci-proto-ncm \
