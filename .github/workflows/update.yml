@@ -1,4 +1,4 @@
-name: Sync Upstream to Self
+name: Sync Upstream to Self without Certain Files
 
 on:
   schedule:
@@ -29,17 +29,30 @@ jobs:
       - name: Fetch Upstream Changes
         run: git fetch upstream
 
+      - name: Checkout Main Branch
+        run: git checkout main  # 切换到本地 main 分支
+
+      - name: Remove Unwanted Files from Main Branch
+        run: |
+          # 删除不需要的文件
+          git rm --cached .vscode
+          git rm --cached .github
+          git rm --cached .devcontainer
+          # 提交移除的文件
+          git commit -m "Remove unwanted files from main branch"
+          
       - name: Merge Upstream Changes into Main
         run: |
-          git checkout main  # 切换到本地 main 分支
           git merge upstream/main || {
             echo "合并 upstream/main 到 main 时发生冲突，请手动解决。"
             exit 1
           }
 
+      - name: Checkout Self Branch
+        run: git checkout self  # 切换到本地 self 分支
+
       - name: Merge Main Changes into Self
         run: |
-          git checkout self  # 切换到本地 self 分支
           git merge main || {
             echo "合并 main 到 self 时发生冲突，请手动解决。"
             exit 1
