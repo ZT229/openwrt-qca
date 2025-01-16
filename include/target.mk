@@ -21,6 +21,7 @@ DEVICE_TYPE?=router
 DEFAULT_PACKAGES:=\
 	base-files \
 	ca-bundle \
+  ca-certificates \
 	dropbear \
 	fstools \
 	libc \
@@ -32,7 +33,22 @@ DEFAULT_PACKAGES:=\
 	uci \
 	uclient-fetch \
 	urandom-seed \
-	urngd
+	urngd \
+  zram-swap \
+  uencrypt-openssl \
+  htop \
+  curl \
+  wget-ssl \
+  dnslookup \
+  dnsproxy \
+  dnscrypt-proxy \
+  dns-forwarder \
+  dns-over-https \
+  block-mount \
+  blockd \
+  brook \
+  mhz \
+  ucert-full
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
@@ -50,23 +66,68 @@ DEFAULT_PACKAGES.nas:=\
 # @brief Default packages for @DEVICE_TYPE router.
 ##
 DEFAULT_PACKAGES.router:=\
+  autocore \
 	dnsmasq-full \
 	firewall4 \
 	nftables \
+	ip6tables-extra \
+  ip6tables-mod-nat \
 	kmod-nft-offload \
+  kmod-tun \
+  kmod-tcp-bbr \
+  kmod-tls \
+  kmod-nf-ipvs \
+  kmod-sched-cake \
+  kmod-nf-nathelper \
+	kmod-nf-nathelper-extra \
+  kmod-nft-queue \
+  kmod-nft-socket \
+  kmod-nft-tproxy \
+  kmod-nft-dup-inet \
+  kmod-nft-bridge \
+  kmod-nft-arp \
+  kmod-nft-netdev \
+  kmod-nls-utf8 \
+  kmod-nls-cp936 \
+  kmod-nls-cp437 \
+  kmod-crypto-blake2b \
+  kmod-crypto-cbc \
+  kmod-crypto-chacha20poly1305 \
+  kmod-crypto-cts \
+  kmod-crypto-deflate \
+  kmod-crypto-ecdh \
+  kmod-crypto-echainiv \
+  kmod-crypto-essiv \
+  kmod-crypto-kpp \
+  kmod-crypto-pcbc \
+  kmod-crypto-xcbc \
+  kmod-crypto-misc \
+  kmod-crypto-xxhash \
+  kmod-crypto-engine \
+  kmod-crypto-fcrypt \
 	odhcp6c \
 	odhcpd-ipv6only \
 	ppp \
-	ppp-mod-pppoe
+	ppp-mod-pppoe \
+  coremark \
+  cpusage \
+  lscpu \
+  UDPspeeder \
+  ucode-mod-bpf \
+  ucode-mod-uclient \
+  libdcwproto \
+  libdcwsocket \
+  luci-proto-ipv6 \
+  luci-app-wol \
+  luci-app-passwall \
+  luci-app-filetransfer \
+  luci-app-cpu-status \
+  luci-app-ramfree \
+  luci-app-daed \
+  default-settings-chn
 # For easy usage
 DEFAULT_PACKAGES.tweak:=\
-	autocore \
-	block-mount \
-	default-settings-chn \
-	kmod-nf-nathelper \
-	kmod-nf-nathelper-extra \
 	luci-light \
-	luci-app-cpufreq \
 	luci-app-package-manager \
 	luci-compat \
 	luci-lib-base \
