@@ -1,0 +1,148 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+
+/dts-v1/;
+
+#include "ipq8071-edgecore.dtsi"
+
+/ {
+	model = "Aliyun AP8220";
+	compatible = "aliyun,ap8220", "qcom,ipq8074";
+
+	leds {
+		compatible = "gpio-leds";
+
+		led_pw: led-pw {
+			label = "pw:status";
+			gpios = <&tlmm 46 GPIO_ACTIVE_HIGH>;
+		};
+
+		led_2g: led-2g {
+			label = "2g:status";
+			gpios = <&tlmm 47 GPIO_ACTIVE_HIGH>;
+		};
+
+		led_5g: led-5g {
+			label = "5g:status";
+			gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
+		};
+
+		led_bt: led-bt {
+			label = "bt:status";
+			gpios = <&tlmm 50 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
+
+&blsp1_spi1 {
+	status = "okay";
+
+	pinctrl-0 = <&spi_0_pins>;
+	pinctrl-names = "default";
+	cs-select = <0>;
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		reg = <0>;
+		spi-max-frequency = <50000000>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "0:sbl1";
+				reg = <0x00 0x50000>;
+			};
+
+			partition@50000 {
+				label = "0:mibib";
+				reg = <0x50000 0x10000>;
+			};
+
+			partition@60000 {
+				label = "0:qsee";
+				reg = <0x60000 0x180000>;
+			};
+
+			partition@1e0000 {
+				label = "0:devcfg";
+				reg = <0x1e0000 0x10000>;
+			};
+
+			partition@1f0000 {
+				label = "0:apdp";
+				reg = <0x1f0000 0x10000>;
+			};
+
+			partition@200000 {
+				label = "0:rpm";
+				reg = <0x200000 0x40000>;
+			};
+
+			partition@240000 {
+				label = "0:cdt";
+				reg = <0x240000 0x10000>;
+			};
+
+			partition@250000 {
+				label = "0:appsblenv";
+				reg = <0x250000 0x10000>;
+			};
+
+			partition@260000 {
+				label = "0:appsbl";
+				reg = <0x260000 0xa0000>;
+			};
+
+			partition@300000 {
+				label = "0:art";
+				reg = <0x300000 0x40000>;
+			};
+
+			partition@340000 {
+				label = "0:ethphyfw";
+				reg = <0x340000 0x80000>;
+			};
+
+			partition@3c0000 {
+				label = "product_info";
+				reg = <0x3c0000 0x10000>;
+			};
+
+			partition@3d0000 {
+				label = "mtdoops";
+				reg = <0x3d0000 0x20000>;
+			};
+
+			partition@3f0000 {
+				label = "priv_data1";
+				reg = <0x3f0000 0x10000>;
+			};
+		};
+	};
+};
+
+&qpic_nand {
+	status = "okay";
+
+	nand@0 {
+		reg = <0>;
+		#address-cells = <0x01>;
+		#size-cells = <0x01>;
+		nand-ecc-strength = <0x04>;
+		nand-ecc-step-size = <0x200>;
+		nand-bus-width = <0x08>;
+
+		partition@0 {
+			label = "rootfs";
+			reg = <0x00 0x8000000>;
+		};
+	};
+};
+
+&wifi {
+	qcom,ath11k-calibration-variant = "Aliyun-AP8220";
+};
