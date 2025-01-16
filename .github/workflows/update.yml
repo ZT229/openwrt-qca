@@ -1,22 +1,19 @@
-name: Update Branch with Upstream Changes
+name: Sync Upstream to Self
 
 on:
   schedule:
-    - cron: "0 2 * * *"  # UTC时间凌晨2点
-  push:
-    branches:
-      - main  # 当你向 main 分支推送时触发
+    - cron: "0 2 * * *"  # UTC 时间凌晨 2 点自动运行
   workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
-  update:
+  sync-upstream:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # 获取所有历史记录
+          fetch-depth: 0  # 拉取完整的提交历史
 
       - name: Set up Git
         run: |
@@ -26,22 +23,30 @@ jobs:
       - name: Add Upstream Remote
         run: |
           if ! git remote get-url upstream; then
-            git remote add upstream https://github.com/VIKINGYFY/immortalwrt.git  # 替换为原始仓库的 URL
+            git remote add upstream https://github.com/VIKINGYFY/immortalwrt.git  # 替换为上游仓库 URL
           fi
 
       - name: Fetch Upstream Changes
         run: git fetch upstream
 
-      - name: Merge Upstream Changes into Your Branch
+      - name: Merge Upstream Changes into Main
         run: |
-          git checkout self  # 替换为你的新分支名称
+          git checkout main  # 切换到本地 main 分支
           git merge upstream/main || {
-            echo "合并过程中出现冲突，请手动解决。"
+            echo "合并 upstream/main 到 main 时发生冲突，请手动解决。"
             exit 1
           }
 
-      - name: Push Changes
+      - name: Merge Main Changes into Self
         run: |
-          git push origin self  # 推送到你的新分支
+          git checkout self  # 切换到本地 self 分支
+          git merge main || {
+            echo "合并 main 到 self 时发生冲突，请手动解决。"
+            exit 1
+          }
+
+      - name: Push Changes to Self Branch
+        run: |
+          git push origin self  # 将 self 分支的更新推送到远程仓库
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行身份验证
