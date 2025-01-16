@@ -36,10 +36,12 @@ jobs:
       - name: Merge Upstream Changes into Main
         run: |
           git merge upstream/main --allow-unrelated-histories || {
-            echo "合并上游更改到 main 分支时出现冲突，正在自动解决..."
-            # 移除不需要的文件夹
+            echo "合并上游更改到 main 分支时发生冲突，正在自动解决冲突..."
+            # 自动解决冲突文件
+            git checkout --ours .gitignore  # 保留本地 .gitignore 的内容
+            git add .gitignore
             git rm -r --cached .vscode .github .devcontainer || true
-            git commit -m "Remove unwanted directories during merge"
+            git commit -m "Resolve merge conflicts and apply upstream changes"
           }
           echo "合并完成"
 
