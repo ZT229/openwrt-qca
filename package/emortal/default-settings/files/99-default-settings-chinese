@@ -6,12 +6,14 @@ if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
 	uci -q batch <<-EOF
 		set system.@system[0].timezone="CST-8"
 		set system.@system[0].zonename="Asia/Shanghai"
+		set system.@system[0].zram_comp_algo="zstd"
+		set system.@system[0].zram_size_mb="512"
 
 		delete system.ntp.server
-		add_list system.ntp.server="ntp.tencent.com"
-		add_list system.ntp.server="ntp.aliyun.com"
 		add_list system.ntp.server="ntp.ntsc.ac.cn"
 		add_list system.ntp.server="cn.ntp.org.cn"
+		add_list system.ntp.server="ntp.bupt.edu.cn"
+		add_list system.ntp.server="cn.pool.ntp.org"
 
 		set system.@imm_init[0].system_chn="1"
 		commit system

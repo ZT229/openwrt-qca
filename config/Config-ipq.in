@@ -5,7 +5,7 @@ comment "Kernel build options"
 
 choice KERNEL_IPQ_MEM_PROFILE
 	prompt "IPQ memory profile"
-	default IPQ_MEM_PROFILE_1024
+	default IPQ_MEM_PROFILE_512
 
 	config IPQ_MEM_PROFILE_1024
 			bool "1024"
@@ -32,7 +32,7 @@ config KERNEL_SKB_RECYCLER
 choice KERNEL_SKB_RECYCLE_SIZE
 	prompt "SKB recycler size"
 	default SKB_RECYCLE_SIZE_2304
-	default SKB_RECYCLE_SIZE_1856 if KERNEL_IPQ_MEM_PROFILE < 1024
+	default SKB_RECYCLE_SIZE_1856 if KERNEL_IPQ_MEM_PROFILE < 512
 
 	depends on KERNEL_SKB_RECYCLER
 	config SKB_RECYCLE_SIZE_1856

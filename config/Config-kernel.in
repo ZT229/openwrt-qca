@@ -26,7 +26,7 @@ config KERNEL_PRINTK
 
 config KERNEL_SWAP
 	bool "Support for paging of anonymous memory (swap)"
-	default y if !SMALL_FLASH
+	default y
 
 config KERNEL_PROC_STRIPPED
 	bool "Strip non-essential /proc functionality to reduce code size"
@@ -445,7 +445,7 @@ config KERNEL_DEBUG_INFO
 
 config KERNEL_DEBUG_INFO_BTF
 	bool "Enable additional BTF type information"
-	default y if (TARGET_armsr || TARGET_bcm27xx || TARGET_ipq806x_chromium || TARGET_mediatek_filogic || TARGET_mvebu_cortexa53 || TARGET_mvebu_cortexa72 || TARGET_rockchip || TARGET_sunxi || TARGET_x86_64) && BUILDBOT
+	default y if (TARGET_armsr || TARGET_bcm27xx || TARGET_ipq806x_chromium || TARGET_mediatek_filogic || TARGET_mvebu_cortexa53 || TARGET_mvebu_cortexa72 || TARGET_rockchip || TARGET_sunxi || TARGET_x86_64)
 	depends on !HOST_OS_MACOS
 	depends on KERNEL_DEBUG_INFO && !KERNEL_DEBUG_INFO_REDUCED
 	select DWARVES
@@ -473,7 +473,7 @@ config KERNEL_MODULE_ALLOW_BTF_MISMATCH
 
 config KERNEL_DEBUG_INFO_REDUCED
 	bool "Reduce debugging information"
-	default y if !(TARGET_armsr || TARGET_bcm27xx || TARGET_ipq806x_chromium || TARGET_mediatek_filogic || TARGET_mvebu_cortexa53 || TARGET_mvebu_cortexa72 || TARGET_rockchip || TARGET_sunxi || TARGET_x86_64) || !BUILDBOT
+	default n if (TARGET_armsr || TARGET_bcm27xx || TARGET_ipq806x_chromium || TARGET_mediatek_filogic || TARGET_mvebu_cortexa53 || TARGET_mvebu_cortexa72 || TARGET_rockchip || TARGET_sunxi || TARGET_x86_64)
 	depends on KERNEL_DEBUG_INFO
 	help
 	  If you say Y here gcc is instructed to generate less debugging
@@ -570,6 +570,7 @@ config KERNEL_BPF_EVENTS
 
 config KERNEL_PROBE_EVENTS_BTF_ARGS
 	bool "Support BTF function arguments for probe events"
+	default y if KERNEL_DEBUG_INFO_BTF
 	depends on KERNEL_DEBUG_INFO_BTF && KERNEL_KPROBE_EVENTS && LINUX_6_6
 
 config KERNEL_BPF_KPROBE_OVERRIDE
@@ -945,6 +946,7 @@ if KERNEL_CGROUPS
 
 	config KERNEL_MEMCG_SWAP_ENABLED
 		bool "Memory Resource Controller Swap Extension enabled by default"
+        default y
 		depends on KERNEL_MEMCG_SWAP
 		help
 		  Memory Resource Controller Swap Extension comes with its price in
@@ -959,7 +961,7 @@ if KERNEL_CGROUPS
 
 
 	config KERNEL_MEMCG_KMEM
-		bool "Memory Resource Controller Kernel Memory accounting (EXPERIMENTAL)"
+		bool "Memory Resource Controller Kernel Memory accounting"
 		default y
 		depends on KERNEL_MEMCG
 		help

@@ -60,8 +60,8 @@ zram_comp_algo()
 	local zram_comp_algo="$( uci -q get system.@system[0].zram_comp_algo )"
 
 	if [ -z "$zram_comp_algo" ]; then
-		# default to lzo, which is always available
-		zram_comp_algo="lzo"
+		# default to zstd, which is always available
+		zram_comp_algo="zstd"
 	fi
 
 	if [ $(grep -c "$zram_comp_algo" /sys/block/$( basename $dev )/comp_algorithm) -ne 0 ]; then
