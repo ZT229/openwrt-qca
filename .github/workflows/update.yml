@@ -29,15 +29,25 @@ jobs:
       - name: Fetch Upstream Changes
         run: git fetch upstream
 
-      - name: Merge Upstream Changes into Main
+      - name: Checkout Main Branch
         run: |
           git checkout main  # 切换到本地 main 分支
-          git merge upstream/main || {
+
+      - name: Apply Upstream Changes to Main (with .gitignore filters)
+        run: |
+          git merge upstream/main --no-commit --no-ff || {
             echo "合并 upstream/main 到 main 时发生冲突，请手动解决。"
             exit 1
           }
+          git reset HEAD .vscode .github .devcontainer  # 确保这些文件夹不被合并
+          git checkout -- .vscode .github .devcontainer  # 恢复这些文件夹
 
-      - name: Merge Main Changes into Self
+      - name: Commit Changes to Main
+        run: |
+          git commit -m "Sync upstream changes into main branch without unwanted folders"
+          git push origin main  # 将 main 分支的更新推送到远程仓库
+
+      - name: Merge Main Branch Changes into Self Branch
         run: |
           git checkout self  # 切换到本地 self 分支
           git merge main || {
