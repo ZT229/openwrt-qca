@@ -33,23 +33,23 @@ jobs:
         run: |
           git checkout main  # 切换到本地 main 分支
 
-      - name: Apply Upstream Changes to Main (with .gitignore filters)
+      - name: Merge Upstream Changes into Main
         run: |
-          git merge upstream/main --no-commit --no-ff --allow-unrelated-histories || {
-            echo "合并 upstream/main 到 main 时发生冲突，请手动解决。"
-            exit 1
+          git merge upstream/main --allow-unrelated-histories || {
+            echo "合并上游更改到 main 分支时出现冲突，正在自动解决..."
+            # 移除不需要的文件夹
+            git rm -r --cached .vscode .github .devcontainer || true
+            git commit -m "Remove unwanted directories during merge"
           }
-          git reset HEAD .vscode .github .devcontainer  # 确保这些文件夹不被合并
-          git checkout -- .vscode .github .devcontainer  # 恢复这些文件夹
+          echo "合并完成"
 
-      - name: Commit Changes to Main
+      - name: Push Changes to Main Branch
         run: |
-          git commit -m "Sync upstream changes into main branch without unwanted folders"
-          git push origin main  # 将 main 分支的更新推送到远程仓库
+          git push origin main  # 推送到远程 main 分支
 
-      - name: Merge Main Branch Changes into Self Branch
+      - name: Merge Main Changes into Self Branch
         run: |
-          git checkout self  # 切换到本地 self 分支
+          git checkout self  # 切换到 self 分支
           git merge main || {
             echo "合并 main 到 self 时发生冲突，请手动解决。"
             exit 1
@@ -57,6 +57,6 @@ jobs:
 
       - name: Push Changes to Self Branch
         run: |
-          git push origin self  # 将 self 分支的更新推送到远程仓库
+          git push origin self  # 推送到远程 self 分支
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行身份验证
