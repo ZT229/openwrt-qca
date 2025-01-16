@@ -12,6 +12,7 @@ config DROPBEAR_CURVE25519
 
 config DROPBEAR_ECC
 	bool "Elliptic curve cryptography (ECC)"
+	default y
 	help
 		Enables basic support for elliptic curve cryptography (ECC)
 		in key exchange and public key authentication.
@@ -28,6 +29,7 @@ config DROPBEAR_ECC
 
 config DROPBEAR_ECC_FULL
 	bool "Elliptic curve cryptography (ECC), full support"
+	default y
 	depends on DROPBEAR_ECC
 	help
 		Enables full support for elliptic curve cryptography (ECC)
@@ -49,7 +51,7 @@ config DROPBEAR_ECC_FULL
 
 config DROPBEAR_ED25519
 	bool "Ed25519 support"
-	default y if !SMALL_FLASH
+	default y
 	help
 		This enables the following public key algorithm:
 		  ssh-ed25519
@@ -95,6 +97,7 @@ config DROPBEAR_ED25519_SK
 
 config DROPBEAR_ZLIB
 	bool "Enable compression"
+	default y
 	help
 		Enables compression using shared zlib library.
 
@@ -174,7 +177,8 @@ config DROPBEAR_AGENTFORWARD
 		dropbear client) if DROPBEAR_DBCLIENT is selected.
 
 config DROPBEAR_MODERN_ONLY
-	bool "Use modern crypto only [BREAKS COMPATIBILITY]"
+	bool "Use modern crypto only"
+	default y
 	select DROPBEAR_ED25519
 	select DROPBEAR_CURVE25519
 	select DROPBEAR_CHACHA20POLY1305

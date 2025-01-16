@@ -179,7 +179,7 @@ define KernelPackage/mac80211/config
 		bool "Enable tracing (mac80211 and supported drivers)"
 		select KERNEL_FTRACE
 		select KERNEL_ENABLE_DEFAULT_TRACERS
-		default n
+		default y
 		help
 		  Select this to enable tracing of mac80211 and
 		  related wifi drivers (using trace-cmd).

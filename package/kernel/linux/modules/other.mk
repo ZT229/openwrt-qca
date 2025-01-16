@@ -823,7 +823,7 @@ define KernelPackage/zram/config
   if PACKAGE_kmod-zram
     choice
       prompt "ZRAM Default compressor"
-      default ZRAM_DEF_COMP_LZORLE
+      default ZRAM_DEF_COMP_ZSTD
 
     config ZRAM_DEF_COMP_LZORLE
             bool "lzo-rle"
