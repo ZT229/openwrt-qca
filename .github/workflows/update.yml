@@ -35,9 +35,9 @@ jobs:
       - name: Remove Unwanted Files from Main Branch
         run: |
           # 删除不需要的文件
-          git rm --cached .vscode
-          git rm --cached .github
-          git rm --cached .devcontainer
+          git rm --cached -r .vscode
+          git rm --cached -r .github
+          git rm --cached -r .devcontainer
           # 提交移除的文件
           git commit -m "Remove unwanted files from main branch"
           
