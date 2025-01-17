@@ -21,7 +21,6 @@ DEVICE_TYPE?=router
 DEFAULT_PACKAGES:=\
 	base-files \
 	ca-bundle \
-  ca-certificates \
 	dropbear \
 	fstools \
 	libc \
@@ -33,22 +32,7 @@ DEFAULT_PACKAGES:=\
 	uci \
 	uclient-fetch \
 	urandom-seed \
-	urngd \
-  zram-swap \
-  uencrypt-openssl \
-  htop \
-  curl \
-  wget-ssl \
-  dnslookup \
-  dnsproxy \
-  dnscrypt-proxy \
-  dns-forwarder \
-  dns-over-https \
-  block-mount \
-  blockd \
-  brook \
-  mhz \
-  ucert-full
+	urngd
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
@@ -66,150 +50,23 @@ DEFAULT_PACKAGES.nas:=\
 # @brief Default packages for @DEVICE_TYPE router.
 ##
 DEFAULT_PACKAGES.router:=\
-  autocore \
 	dnsmasq-full \
 	firewall4 \
 	nftables \
-	ip6tables-extra \
-  ip6tables-mod-nat \
 	kmod-nft-offload \
-  kmod-tun \
-  kmod-tcp-bbr \
-  kmod-tls \
-  kmod-nf-ipvs \
-  kmod-sched-cake \
-  kmod-nf-nathelper \
-	kmod-nf-nathelper-extra \
-  kmod-nft-queue \
-  kmod-nft-socket \
-  kmod-nft-tproxy \
-  kmod-nft-dup-inet \
-  kmod-nft-bridge \
-  kmod-nft-arp \
-  kmod-nft-netdev \
-  kmod-nls-utf8 \
-  kmod-nls-cp936 \
-  kmod-nls-cp437 \
-  kmod-crypto-blake2b \
-  kmod-crypto-cbc \
-  kmod-crypto-chacha20poly1305 \
-  kmod-crypto-cts \
-  kmod-crypto-deflate \
-  kmod-crypto-ecdh \
-  kmod-crypto-echainiv \
-  kmod-crypto-essiv \
-  kmod-crypto-kpp \
-  kmod-crypto-pcbc \
-  kmod-crypto-xcbc \
-  kmod-crypto-misc \
-  kmod-crypto-xxhash \
-  kmod-crypto-engine \
-  kmod-crypto-fcrypt \
-  kmod-cryptodev \
-  kmod-crypto-qce \
-  kmod-crypto-md5 \
-  kmod-qca-mcs \
-  kmod-qrtr-tun \
-  kmod-usb-acm \
-  kmod-usb-net \
-  kmod-usb-net-asix \
-  kmod-usb-net-aqc111 \
-  kmod-usb-net-asix-ax88179 \
-  kmod-usb-net-dm9601-ether \
-  kmod-usb-net-mcs7830 \
-  kmod-usb-net-pegasus \
-  kmod-usb-net-pl \
-  mod-usb-net-smsc75xx \
-  kmod-usb-net-smsc95xx \
-  kmod-usb-net-sr9700 \
-  kmod-usb-net-cdc-eem \
-  kmod-usb-net-cdc-ether \
-  kmod-usb-net-cdc-mbim \
-  kmod-usb-net-cdc-ncm \
-  kmod-usb-net-cdc-subset \
-  kmod-usb-net-dm9601-ether \
-  kmod-usb-net-hso \
-  kmod-usb-net-huawei-cdc-ncm \
-  kmod-usb-net-ipheth \
-  kmod-usb-net-kalmia \
-  kmod-usb-net-kaweth \
-  kmod-usb-net-qmi-wwan \
-  kmod-usb-net-qmi-wwan-fibocom \
-  kmod-usb-net-rndis \
-  kmod-usb-net-rtl8150 \
-  kmod-usb-net-rtl8152 \
-  kmod-usb-net-sierrawireless \
-  kmod-usb-serial-qualcomm \
-  kmod-usb-serial-sierrawireless \
-  kmod-usb-ohci-pci \
-  kmod-usb-serial \
-  kmod-usb-storage-extras \
-  kmod-usb-storage-uas \
-  kmod-usb-uhci \
-  kmod-usb-wdm \
-  kmod-usb2-pci \
-  kmod-mhi-net \
-  kmod-mhi-pci-generic \
-  kmod-mhi-wwan-ctrl \
-  kmod-mhi-wwan-mbim \
-  kmod-nss-ifb \
-  kmod-qca-nss-macsec \
-  kmod-wwan \
-  kmod-fs-ntfs3 \
-  kmod-fs-ksmbd \
 	odhcp6c \
 	odhcpd-ipv6only \
 	ppp \
-	ppp-mod-pppoe \
-  coremark \
-  cpusage \
-  lscpu \
-  comgt-ncm \
-  comgt-directip \
-  sendat \
-  umbim \
-  uqmi \
-  modemmanager \
-  modemmanager-rpcd \
-  dbus-utils \
-  mbim-utils \
-  qmi-utils \
-  quectel-timesync \
-  usb-modeswitch \
-  usbutils \
-  cfdisk \
-  blkid \
-  e4crypt \
-  exfat-fsck \
-  exfat-mkfs \
-  f2fs-tools \
-  libusbmuxd-utils \
-  usbmuxd \
-  UDPspeeder \
-  ucode-mod-bpf \
-  ucode-mod-uclient \
-  libdcwproto \
-  libdcwsocket \
-  ksmbd-hotplug \
-  ksmbd-avahi-service \
-  luci-proto-ipv6 \
-  luci-proto-mbim \
-  luci-proto-ncm \
-  luci-proto-qmi \
-  luci-proto-quectel \
-  luci-app-wol \
-  luci-app-passwall \
-  luci-app-filetransfer \
-  luci-app-cpu-status \
-  luci-app-ramfree \
-  luci-app-daed \
-  luci-app-cpufreq \
-  luci-app-diskman \
-  luci-app-ksmbd \
-  default-settings-chn
+	ppp-mod-pppoe
 # For easy usage
 DEFAULT_PACKAGES.tweak:=\
+	autocore \
+	block-mount \
+	default-settings-chn \
+	kmod-nf-nathelper \
+	kmod-nf-nathelper-extra \
 	luci-light \
+	luci-app-cpufreq \
 	luci-app-package-manager \
 	luci-compat \
 	luci-lib-base \
