@@ -54,13 +54,13 @@ ipq60xx_setup_macs()
 	case "$board" in
 	linksys,mr7350)
 		label_mac=$(mtd_get_mac_ascii devinfo hw_mac_addr)
-		lan_mac=$label_mac
 		wan_mac=$label_mac
+		lan_mac=$label_mac
 		;;
 	qihoo,360v6)
-		lan_mac=$(mtd_get_mac_ascii factory lanMac)
-		wan_mac=$(macaddr_add "$lan_mac" 1)
-		label_mac=$lan_mac
+		label_mac=$(mtd_get_mac_ascii factory lanMac)
+		wan_mac=$(macaddr_add "$label_mac" 1)
+		lan_mac=$label_mac
 		;;
 	tplink,eap610-outdoor)
 		label_mac=$(get_mac_binary /tmp/factory_data/default-mac 0)
