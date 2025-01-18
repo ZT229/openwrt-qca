@@ -112,6 +112,7 @@ DEFAULT_PACKAGES.router:=\
   kmod-nls-utf8 \
   kmod-nls-cp936 \
   kmod-nls-cp437 \
+  kmod-fs-vfat \
   ip6tables-extra \
   ip6tables-mod-nat \
   dns-over-https \
