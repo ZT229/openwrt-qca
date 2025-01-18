@@ -32,7 +32,29 @@ DEFAULT_PACKAGES:=\
 	uci \
 	uclient-fetch \
 	urandom-seed \
-	urngd
+	urngd \
+  htop \
+  libgnutls \
+  libdcwproto \
+  libdcwsocket \
+  ca-certificates \
+  uencrypt-openssl \
+  ucert-full \
+  zram-swap \
+  wget-ssl \
+  ksmbd-avahi-service \
+  ksmbd-hotplug \
+  cfdisk \
+  fdisk \
+  e4crypt \
+  exfat-fsck \
+  exfat-mkfs \
+  f2fs-tools \
+  ntfs-3g-utils \
+  coremark \
+  ucode-mod-uclient \
+  ucode-mod-bpf \
+  usbutils
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
@@ -54,10 +76,62 @@ DEFAULT_PACKAGES.router:=\
 	firewall4 \
 	nftables \
 	kmod-nft-offload \
+  kmod-crypto-blake2b \
+  kmod-crypto-cbc \
+  kmod-crypto-chacha20poly1305 \
+  kmod-crypto-cts \
+  kmod-crypto-deflate \
+  kmod-crypto-des \
+  kmod-crypto-ecdh \
+  kmod-crypto-echainiv \
+  kmod-crypto-engine \
+  kmod-crypto-essiv \
+  kmod-crypto-fcrypt \
+  kmod-crypto-md5 \
+  kmod-crypto-misc \
+  kmod-crypto-pcbc \
+  kmod-crypto-xcbc \
+  kmod-crypto-xts \
+  kmod-crypto-xxhash \
+  kmod-fs-exfat \
+  kmod-fs-ksmbd \
+  kmod-fs-nfs \
+  kmod-nf-ipvs \
+  kmod-nf-nat6 \
+  kmod-nfnetlink-queue \
+  kmod-nft-arp \
+  kmod-nft-bridge \
+  kmod-nft-dup-inet \
+  kmod-nft-netdev \
+  kmod-nft-queue \
+  kmod-sched-cake \
+  kmod-tcp-bbr \
+  kmod-tls \
+  ip6tables-extra \
+  ip6tables-mod-nat \
+  dns-over-https \
+  dnscrypt-proxy \
+  dnscrypt-proxy-resolvers \
+  dnslookup \
+  dnsproxy \
+  UDPspeeder \
 	odhcp6c \
 	odhcpd-ipv6only \
 	ppp \
-	ppp-mod-pppoe
+	ppp-mod-pppoe \
+  luci-app-adguardhome \
+  luci-app-cpu-status \
+  luci-app-cpufreq \
+  luci-app-daed \
+  luci-app-filetransfer \
+  luci-app-ksmbd \
+  luci-app-nfs \
+  luci-app-passwall \
+  luci-app-ramfree \
+  luci-app-ttyd \
+  luci-app-wol \
+  luci-app-diskman \
+  default-settings-chn
 # For easy usage
 DEFAULT_PACKAGES.tweak:=\
 	autocore \

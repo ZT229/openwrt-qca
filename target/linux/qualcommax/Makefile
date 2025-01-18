@@ -7,6 +7,8 @@ FEATURES:=squashfs ramdisk fpu nand rtc emmc
 KERNELNAME:=Image
 CPU_TYPE:=cortex-a53
 SUBTARGETS:=ipq807x ipq60xx
+DEFAULT_SUBTARGET:=ipq60xx
+DEFAULT_PROFILE:=jdcloud_re-ss-01
 
 KERNEL_PATCHVER:=6.6
 
@@ -36,5 +38,10 @@ DEFAULT_PACKAGES += \
 	kmod-qca-nss-drv-vxlanmgr \
 	kmod-qca-nss-drv-wifi-meshmgr \
 	kmod-qca-nss-ecm \
+	kmod-nss-ifb \
+  	kmod-qca-nss-macsec \
+  	kmod-qca-mcs \
+  	kmod-qrtr-tun \
+	kmod-crypto-qce
 
 $(eval $(call BuildTarget))

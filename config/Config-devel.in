@@ -4,6 +4,7 @@
 
 menuconfig DEVEL
 	bool "Advanced configuration options (for developers)"
+	default y
 
 	config BROKEN
 		bool "Show broken platforms / packages / devices" if DEVEL
