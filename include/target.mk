@@ -56,7 +56,13 @@ DEFAULT_PACKAGES:=\
   ucode-mod-bpf \
   usbutils \
   brook \
-  swap-utils
+  swap-utils \
+  modemband \
+  sendat \
+  mii-tool \
+  modemmanager \
+  mbim-utils \
+  qmi-utils
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
@@ -113,6 +119,32 @@ DEFAULT_PACKAGES.router:=\
   kmod-nls-cp936 \
   kmod-nls-cp437 \
   kmod-fs-vfat \
+  kmod-usb2-pci \
+  kmod-usb-uhci \
+  kmod-usb-storage-extras \
+  kmod-usb-storage-uas \
+  kmod-usb-ohci-pci \
+  kmod-usb-net \
+  kmod-usb-net-cdc-eem \
+  kmod-usb-net-cdc-ether \
+  kmod-usb-net-cdc-mbim \
+  kmod-usb-net-cdc-ncm \
+  kmod-usb-net-cdc-subset \
+  kmod-usb-net-hso \
+  kmod-usb-net-qmi-wwan \
+  kmod-usb-net-qmi-wwan-fibocom \
+  kmod-usb-net-qmi-wwan-quectel \
+  kmod-usb-net-rndis \
+  kmod-usb-net-sierrawireless \
+  kmod-mhi-pci-generic \
+  kmod-mhi-net \
+  kmod-mhi-wwan-ctrl \
+  kmod-mhi-wwan-mbim \
+  luci-proto-mbim \
+  luci-proto-qmi \
+  luci-proto-ncm \
+  luci-proto-modemmanager \
+  luci-proto-3g \
   ip6tables-extra \
   ip6tables-mod-nat \
   dns-over-https \
