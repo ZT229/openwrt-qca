@@ -62,7 +62,9 @@ DEFAULT_PACKAGES:=\
   mii-tool \
   modemmanager \
   mbim-utils \
-  qmi-utils
+  qmi-utils \
+  comgt-directip \
+  usb-modeswitch
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
