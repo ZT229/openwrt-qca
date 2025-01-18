@@ -54,7 +54,8 @@ DEFAULT_PACKAGES:=\
   coremark \
   ucode-mod-uclient \
   ucode-mod-bpf \
-  usbutils
+  usbutils \
+  brook
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.
