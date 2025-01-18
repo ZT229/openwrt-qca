@@ -55,7 +55,8 @@ DEFAULT_PACKAGES:=\
   ucode-mod-uclient \
   ucode-mod-bpf \
   usbutils \
-  brook
+  brook \
+  swap-utils
 
 ##@
 # @brief Default packages for @DEVICE_TYPE basic.

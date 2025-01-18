@@ -24,3 +24,19 @@ CONFIG_HW_RANDOM=y
 CONFIG_HW_RANDOM_MSM=y
 CONFIG_SKB_RECYCLER=y
 CONFIG_SKB_RECYCLER_MULTI_CPU=y
+
+CONFIG_TARGET_qualcommax=y
+CONFIG_TARGET_OPTIONS=y
+CONFIG_TARGET_OPTIMIZATION="-O3 -pipe -funroll-loops -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53"
+CONFIG_BPF_TOOLCHAIN_HOST=y
+CONFIG_PER_FEED_REPO=y
+# CONFIG_FEED_nss_packages is not set
+# CONFIG_FEED_sqm_scripts_nss is not set
+# CONFIG_FEED_packages is not set
+# CONFIG_FEED_luci is not set
+# CONFIG_FEED_routing is not set
+# CONFIG_FEED_telephony is not set
+# CONFIG_FEED_video is not set
+CONFIG_PACKAGE_kmod-nf-ipvs-ftp=y
+CONFIG_PACKAGE_kmod-nf-ipvs-sip=y
+CONFIG_PACKAGE_ppp-mod-pppol2tp=y
