@@ -107,6 +107,9 @@ DEFAULT_PACKAGES.router:=\
   kmod-sched-cake \
   kmod-tcp-bbr \
   kmod-tls \
+  kmod-nls-utf8 \
+  kmod-nls-cp936 \
+  kmod-nls-cp437 \
   ip6tables-extra \
   ip6tables-mod-nat \
   dns-over-https \
