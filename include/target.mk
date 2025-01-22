@@ -107,6 +107,8 @@ DEFAULT_PACKAGES.router:=\
   kmod-fs-ksmbd \
   kmod-fs-nfs \
   kmod-nf-ipvs \
+  kmod-nf-ipvs-ftp \
+  kmod-nf-ipvs-sip \
   kmod-nf-nat6 \
   kmod-nfnetlink-queue \
   kmod-nft-arp \
@@ -121,6 +123,8 @@ DEFAULT_PACKAGES.router:=\
   kmod-nls-cp936 \
   kmod-nls-cp437 \
   kmod-fs-vfat \
+  kmod-usb-dwc2-pci \
+  kmod-usb-acm \
   kmod-usb2-pci \
   kmod-usb-uhci \
   kmod-usb-storage-extras \
