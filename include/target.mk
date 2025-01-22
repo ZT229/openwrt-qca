@@ -149,11 +149,6 @@ DEFAULT_PACKAGES.router:=\
   luci-proto-3g \
   ip6tables-extra \
   ip6tables-mod-nat \
-  dns-over-https \
-  dnscrypt-proxy \
-  dnscrypt-proxy-resolvers \
-  dnslookup \
-  dnsproxy \
   UDPspeeder \
 	odhcp6c \
 	odhcpd-ipv6only \
